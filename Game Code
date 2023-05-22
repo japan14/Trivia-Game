@@ -1,0 +1,76 @@
+
+import random
+# class created for the trivia questions
+class Question:
+    def __init__(self, question, answer1, answer2, answer3, answer4, solution):
+        self.question = question
+        self.answer1 = answer1
+        self.answer2 = answer2
+        self.answer3 = answer3
+        self.answer4 = answer4
+        self.solution = solution
+
+    def get_question(self):
+        return self.question
+
+    def get_answer1(self):
+        return self.answer1
+
+    def get_answer2(self):
+        return self.answer2
+
+    def get_answer3(self):
+        return self.answer3
+
+    def get_answer4(self):
+        return self.answer4
+
+    def get_solution(self):
+        return self.solution
+
+# List created to hold trivia questions
+questions = [Question("Who played Mrs. Robinson in The Graduate?", "Anne Bancroft","Julia Roberts", "Anne Hathaway", "Marilyn Monroe",1), Question("What's the name of the skyscraper in Die Hard?", "Towers", "Nakatomi Plaza", "Nakatomi Towers", "Twin Towers",2), Question("The head of what kind of animal is front-and-center in an infamous scene from The Godfather?", "A horse", "A bear", "A lion", "An elephant",1), Question("What was Emma Stone's character named in Crazy, Stupid Love?", "Hannah","Ashley", "Laura", "Jane", 1),Question("What Nba player scored 81 points in a single game?","Kobe Bryant","Lebron James","Michael Jordan","Wilt Chamberlin",1),Question("What Nba player won 6 championship rings?","Kobe Bryant","Lebron James","Michael Jordan","Wilt Chamberlin",3),Question("What Nba player scored 100 points in a single game?","Kobe Bryant","Lebron James","Michael Jordan","Wilt Chamberlin",4),Question("What Nba player won 4 championships?","Kobe Bryant","Lebron James","Michael Jordan","Wilt Chamberlin",2),Question("What Nba player broke Kareem-Abdul Jabar's scoring record?","Kobe Bryant","Lebron James","Michael Jordan","Wilt Chamberlin",2),Question("In the Peak show One Piecce, who Was the man that gave Tony Tony Chopper his signature hat?", "Shanks", "Luffy","Dr.Hiriluk", "Dr.Hogback",3),Question("What was the famous dance performed by Gob Bluth in the show Arrested Development?", "Cow Dance" , "Chicken Dance" , "Crab Dance" , "NaeNae",2),Question("In the Movie The shawshank Redemption, what crime did Andy Dufresne commit that placed him in Prison?", "Murder" , "Tax evasion" , "Arson" ,"Kidnapping",1),Question("Walter Whites character was a famous cook in the show Breaking Bad. What was he cooking?" , "Methaphtamine" , "Dinner" , "Chicken Broth" , "Noodle soup", 1) ,Question("Which Marvel movie's soundtrack won two Grammys?", "Avengers","Black Panther", "Thor","Iron Man", 2), Question("Which of the following is not a keyword in C?", "int", "float", "const", "display", 4),
+    Question("An Exception is", "Runtime Error", "Compile Time Error", "Logical Error", "None of the above", 1),
+    Question("The OOPs concept, exposing only necessary information to users or clients is known as", "Abstraction", "Encapsulation", "Data hiding", "Hiding complexity", 1),
+    Question("IS-A relationship in C++ is", "Abstraction", "Inheritance", "Composition", "None", 2), Question("Who was the first woman ever inducted into the Rock and Roll?","Joan Jett", "Tina Turner", "Aretha Franklin","Grace Jones", 3), Question("Cardi B starred on what reality show?", "Love Island", "The Circle ", "Sistas", "Love & Hip Hop", 4), Question("What singer holds the world record for most words in a hit single?", "Kanye West", "Busta Rhymes", "50 Cent", "Eminem", 4)]
+
+
+# Shuffle the questions for the players
+random.shuffle(questions)
+
+# Use input to get the player names
+player1 = input("Please enter the name of player 1: ")
+player2 = input("Please enter the name of player 2: ")
+
+# Initialize score board
+score1 = 0
+score2 = 0
+# Ask the questions
+for i in range(20):
+    question = questions[i]
+    print(question.get_question())
+    print("1. " + question.get_answer1())
+    print("2. " + question.get_answer2())
+    print("3. " + question.get_answer3())
+    print("4. " + question.get_answer4())
+
+    # Get player 1's answer
+    answer1 = int(input("Enter your choice " + player1 + ": "))
+    if answer1 == question.get_solution():
+      score1 += 1
+    
+    # Get player 2's answer
+    answer2 = int(input("Enter your choice " + player2 + ": "))
+    if answer2 == question.get_solution():
+      score2 += 1
+  
+# Print the final scores and declare winner
+print(player1 + " earned a total score " + str(score1) + " out of 20!")
+print(player2 + " earned a total score " + str(score2) + " out of 20!")
+if score1 > score2:
+    print("Congratulations " + player1 + " is the Winner!")
+elif score2 > score1:
+    print("Congratulations " + player2 + " is the Winner!")
+else:
+    print("It's a tie! No one won!")
+print("Thank you for playing our trivia game!")
